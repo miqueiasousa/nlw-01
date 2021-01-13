@@ -1,0 +1,8 @@
+{
+  "name": "nlw-01",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:miqueiasousa/nlw-01.git",
+  "author": "Miqueias Sousa <miqueiassousa80@gmail.com>",
+  "license": "MIT"
+}
