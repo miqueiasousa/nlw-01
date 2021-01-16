@@ -8,5 +8,6 @@ const PORT = process.env.PORT || 5000
 
 app.use(cors({ origin }))
 app.use(morgan('dev'))
+app.use(express.json())
 
 app.listen(PORT, () => console.log(`[App]: Listening on port ${PORT}`))
