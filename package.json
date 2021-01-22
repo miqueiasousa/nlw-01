@@ -6,7 +6,10 @@
   "author": "Miqueias Sousa <miqueiassousa80@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+    "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "preknex:migrate": "knex migrate:rollback --all",
+    "knex:migrate": "knex migrate:latest",
+    "postknex:migrate": "knex seed:run"
   },
   "devDependencies": {
     "@types/cors": "^2.8.9",
