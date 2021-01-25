@@ -1,6 +1,6 @@
-import * as Knex from 'knex'
+import Knex from 'knex'
 
-export async function seed (knex: Knex): Promise<void> {
+export async function seed (knex: Knex) {
   await knex('items').insert([
     {
       title: 'Pilhas e Baterias',
