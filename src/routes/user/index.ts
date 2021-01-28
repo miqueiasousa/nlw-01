@@ -5,16 +5,19 @@ import UserRepo from '../../database/repository/UserRepo'
 const router = express.Router()
 
 router.post('/', async (req, res) => {
-  const { name, email, password } = req.body
-  const isUserEmailAlreadyDeclared = !!await UserRepo.findOne({ email })
+  const user = await UserRepo.findOne({ email: req.body.email })
 
-  if (isUserEmailAlreadyDeclared) {
-    throw new Error('Bad Request')
+  if (user) {
+    throw new Error('User email is already declared')
   }
 
-  const [user] = await UserRepo.create({ name, email, password })
+  const createdUser = await UserRepo.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  })
 
-  return res.status(201).json(user)
+  return res.status(201).json(createdUser)
 })
 
 export default router

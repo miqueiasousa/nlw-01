@@ -3,7 +3,7 @@ import { IUser, IUserDTO } from '../../types/user'
 
 class UserRepo {
   static async create (userData: IUserDTO) {
-    const user = await knex<IUser>('users')
+    const [user] = await knex<IUser>('users')
       .insert(userData)
       .returning('*')
 
