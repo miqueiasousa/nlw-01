@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.post('/', async (req, res) => {
   const { name, email, password } = req.body
-  const isUserEmailAlreadyDeclared = !!await UserRepo.findByOne({ email })
+  const isUserEmailAlreadyDeclared = !!await UserRepo.findOne({ email })
 
   if (isUserEmailAlreadyDeclared) {
     throw new Error('Bad Request')

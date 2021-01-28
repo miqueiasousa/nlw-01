@@ -10,7 +10,7 @@ class UserRepo {
     return user
   }
 
-  static async findByOne (entrie: Partial<IUser>) {
+  static async findOne (entrie: Partial<IUser>) {
     const user = await knex<IUser>('users')
       .where(entrie)
       .first()
