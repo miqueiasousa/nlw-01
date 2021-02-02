@@ -7,16 +7,17 @@ const router = express.Router()
 const SALT_ROUNDS = 10
 
 router.post('/signup', async (req, res) => {
-  const user = await UserRepo.findOne({ email: req.body.email })
+  const { name, email, password } = req.body
+  const user = await UserRepo.findOne({ email })
 
   if (user) {
     throw new Error('User email is already declared')
   }
 
-  const hashedPassword = await bcrypt.hash(req.body.password, SALT_ROUNDS)
+  const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
   const createdUser = await UserRepo.create({
-    name: req.body.name,
-    email: req.body.email,
+    name,
+    email,
     password: hashedPassword
   })
 
