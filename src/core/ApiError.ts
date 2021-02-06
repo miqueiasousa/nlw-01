@@ -21,3 +21,9 @@ export class UnauthorizedError extends ApiError {
     super(ErrorType.UNAUTHORIZED, message)
   }
 }
+
+export class ForbiddenError extends ApiError {
+  constructor (message = 'Permission Denied') {
+    super(ErrorType.FORBIDDEN, message)
+  }
+}
