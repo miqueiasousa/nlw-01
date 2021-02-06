@@ -27,3 +27,9 @@ export class ForbiddenError extends ApiError {
     super(ErrorType.FORBIDDEN, message)
   }
 }
+
+export class NotFoundError extends ApiError {
+  constructor (message = 'Not Found') {
+    super(ErrorType.NOT_FOUND, message)
+  }
+}
