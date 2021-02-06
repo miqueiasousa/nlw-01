@@ -33,3 +33,9 @@ export class NotFoundError extends ApiError {
     super(ErrorType.NOT_FOUND, message)
   }
 }
+
+export class InternalError extends ApiError {
+  constructor (message = 'Internal Error') {
+    super(ErrorType.INTERNAL, message)
+  }
+}
