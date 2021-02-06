@@ -9,3 +9,9 @@ export default class ApiError {
     this.message = message
   }
 }
+
+export class BadRequestError extends ApiError {
+  constructor (message = 'Bad Request') {
+    super(ErrorType.BAD_REQUEST, message)
+  }
+}
