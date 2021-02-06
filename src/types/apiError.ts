@@ -1,3 +1,4 @@
 export enum ErrorType {
-  BAD_REQUEST = 'BadRequestError'
+  BAD_REQUEST = 'BadRequestError',
+  UNAUTHORIZED = 'UnauthorizedError'
 }

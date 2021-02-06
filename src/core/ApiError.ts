@@ -15,3 +15,9 @@ export class BadRequestError extends ApiError {
     super(ErrorType.BAD_REQUEST, message)
   }
 }
+
+export class UnauthorizedError extends ApiError {
+  constructor (message = 'Invalid Credentials') {
+    super(ErrorType.UNAUTHORIZED, message)
+  }
+}
