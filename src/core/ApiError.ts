@@ -39,3 +39,38 @@ export class InternalError extends ApiError {
     super(ErrorType.INTERNAL, message)
   }
 }
+
+export function handleError (err: ApiError) {
+  switch (err.type) {
+    case ErrorType.BAD_REQUEST:
+      return {
+        statusCode: 400,
+        message: err.message
+      }
+    case ErrorType.UNAUTHORIZED:
+      return {
+        statusCode: 401,
+        message: err.message
+      }
+    case ErrorType.FORBIDDEN:
+      return {
+        statusCode: 403,
+        message: err.message
+      }
+    case ErrorType.NOT_FOUND:
+      return {
+        statusCode: 404,
+        message: err.message
+      }
+    case ErrorType.INTERNAL:
+      return {
+        statusCode: 500,
+        message: err.message
+      }
+    default:
+      return {
+        statusCode: 500,
+        message: 'Something wrong happened'
+      }
+  }
+}
