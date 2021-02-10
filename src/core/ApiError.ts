@@ -34,6 +34,12 @@ export class InternalError extends ApiError {
   }
 }
 
+export class InvalidJSONError extends ApiError {
+  constructor (message = 'Problems parsing JSON') {
+    super(ErrorType.INVALID_JSON, message)
+  }
+}
+
 export function handleError (err: ApiError) {
   switch (err.type) {
     case ErrorType.BAD_REQUEST:
@@ -59,6 +65,11 @@ export function handleError (err: ApiError) {
     case ErrorType.INTERNAL:
       return {
         statusCode: 500,
+        message: err.message
+      }
+    case ErrorType.INVALID_JSON:
+      return {
+        statusCode: 400,
         message: err.message
       }
     default:
