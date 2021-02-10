@@ -1,13 +1,7 @@
 import { ErrorType } from '../types/apiError'
 
-export default class ApiError {
-  public type: ErrorType
-  public message: string
-
-  constructor (type: ErrorType, message: string) {
-    this.type = type
-    this.message = message
-  }
+export default abstract class ApiError {
+  constructor (public type: ErrorType, public message: string) {}
 }
 
 export class BadRequestError extends ApiError {
