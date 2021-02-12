@@ -40,6 +40,12 @@ export class InvalidJSONError extends ApiError {
   }
 }
 
+export class WrongTypeOfJSON extends ApiError {
+  constructor (message = 'Body should be a JSON object') {
+    super(ErrorType.WRONG_TYPE_OF_JSON, message)
+  }
+}
+
 export function handleError (err: ApiError) {
   switch (err.type) {
     case ErrorType.BAD_REQUEST:
@@ -68,6 +74,11 @@ export function handleError (err: ApiError) {
         message: err.message
       }
     case ErrorType.INVALID_JSON:
+      return {
+        statusCode: 400,
+        message: err.message
+      }
+    case ErrorType.WRONG_TYPE_OF_JSON:
       return {
         statusCode: 400,
         message: err.message

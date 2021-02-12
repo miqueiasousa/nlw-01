@@ -3,5 +3,7 @@ export enum ErrorType {
   UNAUTHORIZED = 'UnauthorizedError',
   FORBIDDEN = 'ForbiddenError',
   NOT_FOUND = 'NotFoundError',
-  INTERNAL = 'InternalError'
+  INTERNAL = 'InternalError',
+  INVALID_JSON = 'InvalidJSONError',
+  WRONG_TYPE_OF_JSON = 'WrongTypeOfJSON'
 }
