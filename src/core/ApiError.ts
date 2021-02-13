@@ -10,24 +10,6 @@ export class BadRequestError extends ApiError {
   }
 }
 
-export class UnauthorizedError extends ApiError {
-  constructor (message = 'Invalid Credentials') {
-    super(ErrorType.UNAUTHORIZED, message)
-  }
-}
-
-export class ForbiddenError extends ApiError {
-  constructor (message = 'Permission Denied') {
-    super(ErrorType.FORBIDDEN, message)
-  }
-}
-
-export class NotFoundError extends ApiError {
-  constructor (message = 'Not Found') {
-    super(ErrorType.NOT_FOUND, message)
-  }
-}
-
 export class InternalError extends ApiError {
   constructor (message = 'Internal Error') {
     super(ErrorType.INTERNAL, message)
@@ -51,21 +33,6 @@ export function handleError (err: ApiError) {
     case ErrorType.BAD_REQUEST:
       return {
         statusCode: 400,
-        message: err.message
-      }
-    case ErrorType.UNAUTHORIZED:
-      return {
-        statusCode: 401,
-        message: err.message
-      }
-    case ErrorType.FORBIDDEN:
-      return {
-        statusCode: 403,
-        message: err.message
-      }
-    case ErrorType.NOT_FOUND:
-      return {
-        statusCode: 404,
         message: err.message
       }
     case ErrorType.INTERNAL:
