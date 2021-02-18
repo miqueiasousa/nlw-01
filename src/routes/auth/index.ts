@@ -4,14 +4,13 @@ import bcrypt from 'bcrypt'
 import UserRepo from '../../database/repository/UserRepo'
 import schema from './schema'
 import validator from '../../middlewares/validator'
-import onlyJSON from '../../middlewares/onlyJSON'
+import { BadRequestError } from '../../core/ApiError'
 
 const router = express.Router()
 const SALT_ROUNDS = 10
 
 router.post(
   '/signup',
-  onlyJSON(),
   validator(schema),
   async (req, res) => {
     const { name, email, password } = req.body
